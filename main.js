@@ -65,16 +65,21 @@ autoUpdater.on('checking-for-update', () => {
   window.webContents.send('Show update text', 'Checking for updates!');
 })
 autoUpdater.on('update-available', (info) => {
-  window.webContents.send('Show update text', info.toString());
+  window.webContents.send('Show update text', 'Update avaible');
 })
 autoUpdater.on('update-not-available', (info) => {
-  window.webContents.send('Show update text', info.toString());
+  window.webContents.send('Show update text', 'Update not avaible');
 })
 autoUpdater.on('error', (err) => {
   window.webContents.send('Show update text', err.toString());
 })
 autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  window.webContents.send('Show update text', log_message);
 })
 autoUpdater.on('update-downloaded', (info) => {
-  window.webContents.send('Show update text', info.toString());
+  window.webContents.send('Show update text', 'Update downloaded, 5 seconds to restart');
+  setTimeout(()=>autoUpdater.quitAndInstall(), 5000)
 })
