@@ -1,0 +1,7 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.horseglass.electrontest
+win:
+  target: nsis
+electronVersion: 7.1.9

@@ -1,0 +1,27 @@
+{
+  "name": "electron-test",
+  "version": "1.0.0",
+  "description": "testcucc",
+  "main": "main.js",
+  "build": {
+    "appId": "com.horseglass.electrontest",
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "scripts": {
+    "test": "electron .",
+    "dist": "electron-builder --win",
+    "publish": "electron-builder --win -p always",
+    "release": "build"
+  },
+  "author": "HorseGlass",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.9",
+    "electron-builder": "^22.2.0"
+  },
+  "dependencies": {
+    "electron-updater": "^4.2.0"
+  }
+}
