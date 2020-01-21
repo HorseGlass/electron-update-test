@@ -1,5 +1,3 @@
-process.env.GH_TOKEN = "4320920ce5d345630605315f7bb03c58541bece4";
-
 const {app, BrowserWindow, ipcMain, Menu} = require('electron')
 const { autoUpdater } = require("electron-updater")
 const path = require('path')
