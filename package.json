@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "description": "testcucc",
   "main": "main.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/HorseGlass/electron-update-test.git"
+  },
   "build": {
     "appId": "com.horseglass.electrontest",
     "win": {
       "target": "nsis"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "draft"
     }
   },
   "scripts": {
