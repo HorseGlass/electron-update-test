@@ -25,6 +25,8 @@ app.once('ready', () => {
     }
   })
 
+  window.webContents.openDevTools()
+
   window.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
@@ -40,7 +42,10 @@ app.once('ready', () => {
       label: 'Update',
       submenu: [
         {
-          label: 'Check for updates'
+          label: 'Check for updates',
+          click: () => {
+            autoUpdater.checkForUpdates();
+          }
         }
       ]
     }
@@ -54,4 +59,22 @@ app.on('window-all-closed', () => {
 
 ipcMain.on('reciveVersionNumber', (event, arg) => {
   event.returnValue = app.getVersion();
+})
+
+autoUpdater.on('checking-for-update', () => {
+  window.webContents.send('Show update text', 'Checking for updates!');
+})
+autoUpdater.on('update-available', (info) => {
+  window.webContents.send('Show update text', info.toString());
+})
+autoUpdater.on('update-not-available', (info) => {
+  window.webContents.send('Show update text', info.toString());
+})
+autoUpdater.on('error', (err) => {
+  window.webContents.send('Show update text', err.toString());
+})
+autoUpdater.on('download-progress', (progressObj) => {
+})
+autoUpdater.on('update-downloaded', (info) => {
+  window.webContents.send('Show update text', info.toString());
 })

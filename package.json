@@ -14,14 +14,15 @@
     },
     "publish": {
       "provider": "github",
-      "releaseType": "draft"
+      "owner": "HorseGlass",
+      "repo": "electron-test"
     }
   },
   "scripts": {
     "test": "electron .",
     "dist": "electron-builder --win",
     "publish": "electron-builder --win -p always",
-    "release": "build"
+    "release": "electron-builder build -p always"
   },
   "author": "HorseGlass",
   "license": "ISC",
